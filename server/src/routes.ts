@@ -1,2 +1,5 @@
 import { Application } from "express";
-export const initializeRoutes = (app: Application) => {};
+import { commentsRoutes } from "./routes/comments.routes";
+export const initializeRoutes = (app: Application) => {
+  commentsRoutes("/api/v1/comments", app);
+};

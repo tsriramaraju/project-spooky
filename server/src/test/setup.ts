@@ -1,5 +1,11 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { connect, connection } from "mongoose";
+import { CommentDoc } from "../interfaces/comments";
+import { Comment } from "../models/comments.model";
+
+declare global {
+  function createComment(): Promise<CommentDoc>;
+}
 
 let mongo: any;
 beforeAll(async () => {
@@ -28,3 +34,16 @@ afterAll(async () => {
 afterEach(() => {
   jest.clearAllMocks();
 });
+
+global.createComment = async (): Promise<CommentDoc> => {
+  const data = {
+    comment: "test comment",
+    user: {
+      name: "test user",
+      image: "test image",
+    },
+  };
+
+  const comment = Comment.build(data).save();
+  return comment;
+};
