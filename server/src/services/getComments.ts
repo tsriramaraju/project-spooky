@@ -1,3 +1,4 @@
+import { ServerError } from "../errors";
 import { Comment } from "../models/comments.model";
 
 export const getComments = async () => {
@@ -6,5 +7,7 @@ export const getComments = async () => {
     return comments;
   } catch (error) {
     console.log(error);
+
+    throw new ServerError(error.message);
   }
 };

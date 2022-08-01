@@ -1,3 +1,4 @@
+import { ServerError } from "../errors";
 import { Comment } from "../models/comments.model";
 
 export const toggleUpvote = async (commentId: string, userId: string) => {
@@ -23,5 +24,7 @@ export const toggleUpvote = async (commentId: string, userId: string) => {
     return { upVoted, votes: comment.votes.length };
   } catch (error) {
     console.log(error);
+
+    throw new ServerError(error.message);
   }
 };
