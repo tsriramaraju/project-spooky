@@ -7,7 +7,7 @@ const router = Router();
 
 /**
  *  @desc      add comment
- *  @route     Get /api/v1/comments/
+ *  @route     POST /api/v1/comments/
  *  @access    Public
  *  @returns   comment doc
  */

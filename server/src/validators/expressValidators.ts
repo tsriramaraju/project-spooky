@@ -1,4 +1,5 @@
 import { body } from "express-validator";
+import { Types } from "mongoose";
 
 const commentValidation = body("comment")
   .isString()
@@ -28,4 +29,15 @@ const userImageValidation = body("user.image")
   .isURL()
   .withMessage("User image must be a URL");
 
-export { commentValidation, userNameValidation, userImageValidation };
+const userIdValidation = body("userId")
+  .isString()
+  .withMessage("User id must be a string")
+  .not()
+  .isEmpty()
+  .withMessage("User id is required")
+  .custom((value, { req }) => {
+    if (Types.ObjectId.isValid(value)) return true;
+    throw new Error("User id must be a valid ObjectId");
+  });
+
+export { commentValidation, userNameValidation, userImageValidation, userIdValidation };

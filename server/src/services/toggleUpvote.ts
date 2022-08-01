@@ -21,7 +21,7 @@ export const toggleUpvote = async (commentId: string, userId: string) => {
     }
     await comment.save();
 
-    return { upVoted, votes: comment.votes.length };
+    return upVoted;
   } catch (error) {
     console.log(error);
 
