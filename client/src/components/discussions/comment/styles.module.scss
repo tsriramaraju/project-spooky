@@ -1,0 +1,69 @@
+@use '../../../scss/breakpoints';
+@use '../../../scss/config';
+@use '../../../scss/mixins';
+
+.comment {
+  display: flex;
+  gap: 0.5rem;
+  .image {
+    margin-top: 0.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .details {
+    .name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: config.$dark_shade;
+      .date {
+        color: config.$light_accent;
+        font-size: 0.8rem;
+        font-weight: 400;
+      }
+    }
+    .text {
+      color: config.$dark_shade;
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.24rem;
+      padding: 0.15rem 0;
+    }
+    .actions {
+      display: flex;
+      align-items: center;
+      .count {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: config.$light_accent;
+        margin-left: 0.5rem;
+      }
+      .vote {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: config.$main_brand;
+        @include mixins.disableSelect();
+        cursor: pointer;
+
+        .icon {
+          width: 0.85rem;
+          height: 0.85rem;
+          color: config.$main_brand;
+          margin-left: 1rem;
+          margin-right: 0.25rem;
+          &.reverse {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      .count {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

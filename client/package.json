@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "feather-icons": "^4.29.0",
+    "moment": "^2.29.4",
     "sass": "^1.54.0"
   }
 }

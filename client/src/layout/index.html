@@ -7,32 +7,19 @@
     <title>Document</title>
   </head>
   <body>
-    <h2 class="${styles.heading}">
-      My First Resume and it's not the convention!
-    </h2>
-    <iframe
-      allowfullscreen="allowfullscreen"
-      scrolling="no"
-      class="fp-iframe"
-      style="border: 1px solid lightgray; width: 100%; height: 600px"
-      src="https://heyzine.com/flip-book/7f6e1515d6.html"
-    ></iframe>
-    <p class="${styles.text}">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
-      expedita maiores temporibus sint, placeat quaerat sapiente id. Totam rem,
-      sequi porro ipsam obcaecati natus culpa! Lorem ipsum dolor, sit amet
-      consectetur adipisicing elit. Nulla, modi commodi, vero saepe, inventore
-      sed consequuntur dignissimos vitae praesentium mollitia consequatur
-      voluptatem quos? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Praesentium expedita maiores temporibus sint, placeat quaerat sapiente id.
-      Totam rem, sequi porro ipsam obcaecati natus culpa! Lorem ipsum dolor, sit
-      amet consectetur adipisicing elit. Nulla, modi commodi, vero saepe,
-      inventore sed consequuntur dignissimos vitae praesentium mollitia
-      consequaturExpedita excepturi exercitationem maiores modi quae? Dicta,
-      voluptatibus. Deserunt incidunt pariatur voluptatum voluptatem, odio
-      possimus totam a. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Nam nostrum, dolorum quidem est dolor cum.
-    </p>
-    <div id="discussions"></div>
+    <img class="${styles.image}" src="${image}" alt="${name} photo" />
+    <div class="${styles.details}">
+      <h4 class="${styles.name}">
+        ${name}<span class="${ styles.date }"
+          >. ${moment(date).fromNow()}
+        </span>
+      </h4>
+      <p class="${styles.text}">${comment}</p>
+
+      <div class="${styles.actions}">
+        <div class="${styles.count}" id="votes-${randomNumber}"></div>
+        <div class="${styles.vote}"></div>
+      </div>
+    </div>
   </body>
 </html>
