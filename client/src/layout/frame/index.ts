@@ -1,4 +1,5 @@
 import { setUpProfileCard } from '../../components/profileCard';
+import { setUpProfileCardMini } from '../../components/profileCardMini';
 import { setUpRecentPosts } from '../../components/recentPosts';
 import '../../scss/global.scss';
 import { setupHeader } from '../header';
@@ -25,4 +26,5 @@ export const setUpFrame = (id: string) => {
   setupHeader('#header');
   setUpProfileCard('#profile_card');
   setUpRecentPosts('#recent_posts');
+  setUpProfileCardMini('#profile_card_mini');
 };

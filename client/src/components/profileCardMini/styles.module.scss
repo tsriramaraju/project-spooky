@@ -1,0 +1,51 @@
+@use '../../scss/breakpoints';
+@use '../../scss/config';
+@use '../../scss/mixins';
+
+.profileCardMini {
+  width: 95%;
+  max-width: 35rem;
+  height: 6rem;
+  padding-top: 1.5rem;
+  overflow: hidden;
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  .image {
+    width: 4rem;
+    height: 4rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .details {
+    .name {
+      color: config.$dark_shade;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .meta {
+      color: config.$light_accent;
+      font-size: 0.8rem;
+      padding-top: 0.25rem;
+    }
+  }
+  .iconsContainer {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: config.$light_accent;
+      cursor: pointer;
+      &:hover {
+        color: config.$main_brand;
+      }
+    }
+  }
+}
