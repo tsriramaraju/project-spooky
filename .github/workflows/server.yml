@@ -6,6 +6,8 @@ on:
   push:
     branches: [server]
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 # setting some environment variables
 env:
   REGISTRY: registry.digitalocean.com/tsriramaraju
