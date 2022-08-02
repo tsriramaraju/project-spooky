@@ -5,6 +5,6 @@ COPY ./build /build
 COPY ./package.json /package.json
 COPY ./package-lock.json /package-lock.json
 
-RUN npm install --only=prod
+RUN npm install --omit=dev
 
 CMD [ "npm","start" ]

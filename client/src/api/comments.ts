@@ -1,6 +1,7 @@
 import { CommentAttrs, CommentPayload } from '../interfaces/comment';
 import axios from 'axios';
-export const api = 'http://192.168.0.121:4545/api/v1/comments';
+// export const api = 'http://192.168.0.121:4545/api/v1/comments';
+export const api = 'http://143.198.236.47:3000/api/v1/comments';
 
 export const getCommentsAPI = async (): Promise<CommentPayload[]> => {
   const res = await axios.get(api);
