@@ -1,0 +1,64 @@
+@use '../../scss/breakpoints';
+@use '../../scss/config';
+@use '../../scss/mixins';
+
+.recentPosts {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: config.$br_small;
+  background-color: white;
+  box-shadow: config.$shadow_soft;
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.5rem;
+  overflow-y: scroll;
+  @include mixins.minScroll();
+  .post {
+    .title {
+      color: config.$dark_shade;
+      font-size: 1.25rem;
+      font-weight: 600;
+      font-family: config.$font;
+    }
+    .meta {
+      // padding-top: 0.35rem;
+      display: flex;
+      font-size: 0.85rem;
+      color: config.$light_accent;
+      .name {
+        font-weight: 500;
+        font-family: config.$font;
+        padding-right: 0.25rem;
+      }
+      .time {
+        margin-left: auto;
+        color: config.$main_brand;
+      }
+    }
+
+    .content {
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+      padding-top: 0.25rem;
+      color: config.$light_accent;
+      width: 100%;
+      height: 2.5rem;
+      line-height: 1.25;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+  .ruler {
+    width: 100%;
+    border-radius: config.$br_small;
+    background-color: config.$light_accent;
+    height: 0.1rem;
+  }
+}
