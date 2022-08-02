@@ -7,7 +7,9 @@
     "start": "node build/src/server.js",
     "dev": " ts-node-dev src/server.ts",
     "test": "jest --watch-all --no-cache ",
-    "test:open": "jest --watch-all --no-cache --detectOpenHandles "
+    "test:open": "jest --watch-all --no-cache --detectOpenHandles ",
+    "test:ci": "jest --detectOpenHandles --forceExit",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
