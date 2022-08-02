@@ -70,5 +70,5 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "useUnknownInCatchVariables": false
   },
-  "exclude": ["node_modules", "tests"]
+  "exclude": ["node_modules", "tests", "__tests__", "test", "**/*.test.ts"]
 }
