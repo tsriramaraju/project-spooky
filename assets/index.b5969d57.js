@@ -74,7 +74,7 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora in, commodi ei
 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora in, commodi eius officiis ducimus ipsa, officia sunt veniam quas praesentium quam voluptatem magnam possimus, porro architecto optio illum vel quaerat culpa magni ad. Est animi voluptatibus aliquam et, voluptatum necessitatibus culpa quos magni ut veritatis, aperiam distinctio dolore vitae fugit? Beatae consequuntur dignissimos explicabo pariatur neque itaque nesciunt inventore voluptates, vero quis et quasi maxime reiciendis nisi rerum tempora, similique cumque ratione tempore quidem amet voluptas debitis molestias? Laboriosam fugit, magnam quae quaerat explicabo animi neque autem corrupti sunt, doloribus nesciunt eaque totam maiores repellat similique. Illo quibusdam similique eos.
     </p>
     <div id="discussions"></div>
-      `,Rc("#discussions"))},Hc="_profileCard_1k16o_1",Ic="_header_1k16o_10",Fc="_image_1k16o_14",$c="_details_1k16o_22",zc="_row1_1k16o_28",Wc="_name_1k16o_35",Uc="_span_1k16o_39",Vc="_button_1k16o_43",Bc="_icon_1k16o_65",Gc="_row2_1k16o_70",qc="_chip_1k16o_81",Zc="_text_1k16o_106",Jc="_footer_1k16o_112",Kc="_dateBlock_1k16o_116",Xc="_heading_1k16o_116",Qc="_date_1k16o_116",eu="_statsBlock_1k16o_126",L={profileCard:Hc,header:Ic,image:Fc,details:$c,row1:zc,name:Wc,span:Uc,button:Vc,icon:Bc,row2:Gc,chip:qc,text:Zc,footer:Jc,dateBlock:Kc,heading:Xc,date:Qc,statsBlock:eu},qi="/project-spooky/assets/sriram.1c1f3156.jpg",tu=e=>{const t=document.querySelector(e);!t||(t.className=L.profileCard,t.innerHTML=`
+      `,Rc("#discussions"))},Hc="_profileCard_1k16o_1",Ic="_header_1k16o_10",Fc="_image_1k16o_14",$c="_details_1k16o_22",zc="_row1_1k16o_28",Wc="_name_1k16o_35",Uc="_span_1k16o_39",Vc="_button_1k16o_43",Bc="_icon_1k16o_65",Gc="_row2_1k16o_70",qc="_chip_1k16o_81",Zc="_text_1k16o_106",Jc="_footer_1k16o_112",Kc="_dateBlock_1k16o_116",Xc="_heading_1k16o_116",Qc="_date_1k16o_116",eu="_statsBlock_1k16o_126",L={profileCard:Hc,header:Ic,image:Fc,details:$c,row1:zc,name:Wc,span:Uc,button:Vc,icon:Bc,row2:Gc,chip:qc,text:Zc,footer:Jc,dateBlock:Kc,heading:Xc,date:Qc,statsBlock:eu},qi="/project_spooky/assets/sriram.1c1f3156.jpg",tu=e=>{const t=document.querySelector(e);!t||(t.className=L.profileCard,t.innerHTML=`
     <div class="${L.header}">
       <img src="${qi}" alt="" class="${L.image}" />
       <div class="${L.details}">
@@ -185,7 +185,7 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora in, commodi ei
      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro totam sint facilis molestiae error mollitia consequuntur dolorum esse nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam tempore inventore delectus?
       </p>
     </div >
-      `)},gu="_header_1yhey_1",wu="_logo_1yhey_15",_u="_iconsContainer_1yhey_18",ju="_icon_1yhey_18",Ae={header:gu,logo:wu,iconsContainer:_u,icon:ju},Mu="/project-spooky/assets/logo.99a4c854.png",bu=e=>{const t=document.querySelector(e);!t||(t.innerHTML=`
+      `)},gu="_header_1yhey_1",wu="_logo_1yhey_15",_u="_iconsContainer_1yhey_18",ju="_icon_1yhey_18",Ae={header:gu,logo:wu,iconsContainer:_u,icon:ju},Mu="/project_spooky/assets/logo.99a4c854.png",bu=e=>{const t=document.querySelector(e);!t||(t.innerHTML=`
     <div class="${Ae.header}">
       <img src="${Mu}" alt="logo" class="${Ae.logo}" />
       <div class="${Ae.iconsContainer}">
