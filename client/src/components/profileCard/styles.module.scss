@@ -1,0 +1,138 @@
+@use '../../scss/breakpoints';
+@use '../../scss/config';
+@use '../../scss/mixins';
+
+.profileCard {
+  width: 100%;
+  border-radius: config.$br_small;
+  background-color: white;
+  box-shadow: config.$shadow-soft;
+  overflow: hidden;
+  padding: 0.75rem;
+  flex-shrink: 0;
+  .header {
+    display: flex;
+    gap: 0.5rem;
+
+    //     height: 3rem;
+    .image {
+      flex-shrink: 0;
+      width: 5rem;
+      height: 5rem;
+      border-radius: config.$br_small;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 0.5rem;
+      .row1 {
+        padding-top: 0.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        .name {
+          font-size: 1.15rem;
+          font-weight: 500;
+          .span {
+            font-size: 0.66rem;
+            color: config.$light_accent;
+          }
+        }
+        .button {
+          background-color: config.$dark_shade;
+          border-radius: config.$br_small;
+          color: white;
+          font-size: 0.85rem;
+          font-weight: 400;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.35rem 0.5rem;
+          gap: 0.5rem;
+          @include mixins.disableSelect();
+          cursor: pointer;
+          &:active {
+            transform: scale(0.9);
+          }
+          .icon {
+            color: white;
+            height: 16px;
+            width: 16px;
+          }
+        }
+      }
+      .row2 {
+        display: flex;
+        padding-top: 0.5rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        @include breakpoints.smallLaptops {
+          gap: 0.25rem;
+        }
+        .chip {
+          background-color: config.$main_brand;
+          border-radius: config.$br_small;
+          color: white;
+          padding: 0.25rem;
+          font-size: 0.8rem;
+          &:hover {
+            background-color: config.$dark_shade;
+          }
+          cursor: pointer;
+          @include mixins.disableSelect();
+
+          &:active {
+            transform: scale(0.9);
+          }
+
+          @include breakpoints.smallLaptops {
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+  .text {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    padding: 0.5rem 0;
+    color: config.$light_accent;
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    .dateBlock {
+      .heading {
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: config.$dark_shade;
+      }
+      .date {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: config.$light_accent;
+      }
+    }
+    .statsBlock {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      .text {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        gap: 0.25rem;
+        .icon {
+          height: 1.2rem;
+          width: 1.2rem;
+          color: config.$main_brand;
+        }
+      }
+    }
+  }
+}

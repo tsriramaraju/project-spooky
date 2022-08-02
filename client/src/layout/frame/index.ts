@@ -1,3 +1,4 @@
+import { setUpProfileCard } from '../../components/profileCard';
 import '../../scss/global.scss';
 import { setupHeader } from '../header';
 import styles from './styles.module.scss';
@@ -15,10 +16,11 @@ export const setUpFrame = (id: string) => {
       <div id="content"></div>
     </div>
     <div class="${styles.sideBar}">
-      <div id="profile_Card"></div>
+      <div id="profile_card"></div>
       <div id="recent_posts"></div>
     </div>
        `;
 
   setupHeader('#header');
+  setUpProfileCard('#profile_card');
 };

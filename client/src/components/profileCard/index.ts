@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
+import styles from './styles.module.scss';
+import image from '../../assets/sriram.jpg';
+import { icons } from 'feather-icons';
+
+export const setUpProfileCard = (id: string) => {
+  const element = document.querySelector<HTMLDivElement>(id);
+  if (!element) return;
+
+  element.className = styles.profileCard;
+
+  element.innerHTML = `
     <div class="${styles.header}">
       <img src="${image}" alt="" class="${styles.image}" />
       <div class="${styles.details}">
@@ -15,9 +17,8 @@
             T Sri Rama Raju
             <span class="${styles.span}">26</span>
           </p>
-
           <div class="${styles.button}">
-            Follow ${icons['user-plus'].toSvg({ class: styles.icon, })}
+            Follow ${icons['user-plus'].toSvg({ class: styles.icon })}
           </div>
         </div>
         <div class="${styles.row2}">
@@ -32,7 +33,7 @@
       A full stack developer and founder of the SASS application Storzey. A
       super app for managing multiple operations for business owners, including
       order fulfillment, inventory management, accounting, logistics, CRM, CMS,
-      website design, and many others.
+      website design, and many others.        
     </div>
     <div class="${styles.footer}">
       <div class="${styles.dateBlock}">
@@ -41,12 +42,12 @@
       </div>
       <div class="${styles.statsBlock}">
         <p class="${styles.text}">
-          13 ${icons['file-text'].toSvg({ class: styles.icon, })}
+          13 ${icons['file-text'].toSvg({ class: styles.icon })}
         </p>
         <p class="${styles.text}">
-          69 ${icons['users'].toSvg({ class: styles.icon, })}
+          69 ${icons['users'].toSvg({ class: styles.icon })}
         </p>
       </div>
     </div>
-  </body>
-</html>
+       `;
+};
