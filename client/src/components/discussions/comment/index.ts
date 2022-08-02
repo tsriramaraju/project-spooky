@@ -3,6 +3,7 @@ import { icons } from 'feather-icons';
 import { CommentPayload } from '../../../interfaces/comment';
 import styles from './styles.module.scss';
 import { toggleVoteAPI } from '../../../api/comments';
+import { handleServerErrors } from '../../../utils/handleServerErrors';
 export const constructComment = (data: {
   payload: CommentPayload;
   currentUserId: string;
@@ -65,8 +66,7 @@ export const constructComment = (data: {
         setVoteAction(voteElement, true);
       }
     } catch (error) {
-      console.log(error);
-      //  TODO : Handle error
+      handleServerErrors(error);
     }
   });
 

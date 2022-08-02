@@ -1,5 +1,6 @@
 import { addCommentAPI, getCommentsAPI } from '../../api/comments';
 import { usersData } from '../../dummyData/users';
+import { handleServerErrors } from '../../utils/handleServerErrors';
 import { constructComment } from './comment';
 import styles from './styles.module.scss';
 
@@ -53,7 +54,7 @@ export const setUpDiscussions = (id: string) => {
           name: user.name,
         },
       });
-
+      console.log('res', res);
       const commentElement = constructComment({
         payload: res,
         currentUserId: user.id,
@@ -62,8 +63,7 @@ export const setUpDiscussions = (id: string) => {
       commentsContainer.append(commentElement);
       input.value = '';
     } catch (error) {
-      console.log(error);
-      //  TODO : Add error handling
+      handleServerErrors(error);
     }
   });
 };

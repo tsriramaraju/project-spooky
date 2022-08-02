@@ -14,8 +14,10 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "feather-icons": "^4.29.0",
     "moment": "^2.29.4",
+    "notyf": "^3.10.0",
     "sass": "^1.54.0"
   }
 }
