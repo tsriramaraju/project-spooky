@@ -1,0 +1,19 @@
+@use './config';
+html,
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: config.$white-bg;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
