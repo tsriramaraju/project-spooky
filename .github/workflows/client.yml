@@ -1,12 +1,9 @@
-name: Client deploy
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push events but only for the master branch
-  push:
-    branches: [master]
+name: Deploy
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -17,16 +14,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: change directory to client
-        run: cd client
-
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 16
 
       - name: Install dependencies
-      - run: npm i
+        uses: bahmutov/npm-install@v1
 
       - name: Build project
         run: npm run build
