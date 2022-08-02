@@ -9,6 +9,10 @@ declare global {
 
 let mongo: any;
 beforeAll(async () => {
+  process.env.PORT = "4545";
+  process.env.MONGO_URL = "Some random url";
+  process.env.SLACK_SECRET = "Some random secret";
+
   mongo = await MongoMemoryServer.create();
   const mongoUri = mongo.getUri();
 
