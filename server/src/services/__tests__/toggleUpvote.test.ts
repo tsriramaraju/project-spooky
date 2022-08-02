@@ -1,4 +1,4 @@
-import {Types} from "mongoose";
+import { Types } from "mongoose";
 import { addComment } from "../addComment";
 import { toggleUpvote } from "../toggleUpvote";
 
@@ -23,7 +23,7 @@ describe("Toggle UpVote service test group", () => {
 
     const result = await toggleUpvote(comment!._id, data.user.name);
 
-    expect(result).toEqual({ upVoted: true, votes: 1 });
+    expect(result).toEqual(true);
   });
 
   it("Should downvote the comment if user has upvoted the comment", async () => {
@@ -38,10 +38,10 @@ describe("Toggle UpVote service test group", () => {
     const comment = await addComment(data);
     const result = await toggleUpvote(comment!._id, data.user.name);
 
-    expect(result).toEqual({ upVoted: true, votes: 1 });
+    expect(result).toEqual(true);
 
     const result2 = await toggleUpvote(comment!._id, data.user.name);
 
-    expect(result2).toEqual({ upVoted: false, votes: 0 });
+    expect(result2).toEqual(false);
   });
 });
