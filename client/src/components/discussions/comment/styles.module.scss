@@ -44,7 +44,7 @@
         display: flex;
         align-items: center;
         font-size: 0.9rem;
-        font-weight: 400;
+        font-weight: 600;
         color: config.$main_brand;
         @include mixins.disableSelect();
         cursor: pointer;
@@ -63,6 +63,15 @@
 
       .count {
         font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        color: config.$dark_accent;
+        .icon {
+          width: 1rem;
+          height: 1rem;
+          color: config.$dark_accent;
+        }
       }
     }
   }
