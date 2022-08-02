@@ -1,4 +1,4 @@
-name: Deploy
+name: Client deploy
 
 on:
   push:
@@ -18,6 +18,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
+
+      - name: change directory to client
+        run: cd client
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
