@@ -18,7 +18,7 @@ export const toggleVoteAPI = async (
   commentID: string,
   userId: string
 ): Promise<Boolean> => {
-  const response = await axios.post(`${api}/${commentID}/vote`, {
+  const response = await axios.put(`${api}/${commentID}`, {
     userId,
   });
   return response.data;
