@@ -1,0 +1,44 @@
+@use '../../scss/breakpoints';
+@use '../../scss/config';
+@use '../../scss/mixins';
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  @include breakpoints.desktop {
+    padding: 3rem;
+    gap: 8rem;
+    justify-content: start;
+  }
+
+  .logo {
+    width: 10rem;
+  }
+  .iconsContainer {
+    display: none;
+    @include breakpoints.desktop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: config.$light_shade;
+      cursor: pointer;
+
+      &:hover {
+        color: config.$main_brand;
+      }
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+}

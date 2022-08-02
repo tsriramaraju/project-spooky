@@ -1,4 +1,5 @@
 import '../../scss/global.scss';
+import { setupHeader } from '../header';
 import styles from './styles.module.scss';
 
 export const setUpFrame = (id: string) => {
@@ -18,4 +19,6 @@ export const setUpFrame = (id: string) => {
       <div id="recent_posts"></div>
     </div>
        `;
+
+  setupHeader('#header');
 };
