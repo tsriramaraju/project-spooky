@@ -1,3 +1,4 @@
+import { setUpContent } from '../../components/content';
 import { setUpProfileCard } from '../../components/profileCard';
 import { setUpProfileCardMini } from '../../components/profileCardMini';
 import { setUpRecentPosts } from '../../components/recentPosts';
@@ -27,4 +28,5 @@ export const setUpFrame = (id: string) => {
   setUpProfileCard('#profile_card');
   setUpRecentPosts('#recent_posts');
   setUpProfileCardMini('#profile_card_mini');
+  setUpContent('#content');
 };

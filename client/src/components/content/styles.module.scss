@@ -1,0 +1,24 @@
+@use '../../scss/breakpoints';
+@use '../../scss/config';
+@use '../../scss/mixins';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+  .heading {
+    color: config.$dark_shade;
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+
+  .text {
+    font-size: 0.9rem;
+    color: config.$light_accent;
+    line-height: 1.4rem;
+    font-weight: 400;
+    white-space: pre-line;
+  }
+}
