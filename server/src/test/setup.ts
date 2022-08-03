@@ -8,6 +8,13 @@ declare global {
   function createReply(commentId: string): Promise<string>;
 }
 
+jest.mock("../utils/sendPusherEvent", () => ({
+  sendPusherEvent: jest.fn().mockImplementation((message: any, event: string) => {
+    console.log(message, event);
+    return true;
+  }),
+}));
+
 let mongo: any;
 beforeAll(async () => {
   process.env.PORT = "4545";
