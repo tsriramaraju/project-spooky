@@ -8,6 +8,16 @@ interface CommentAttrs {
   user: {
     name: string;
     image: string;
+    id: string;
+  };
+}
+
+interface ReplyAttrs {
+  reply: string;
+  user: {
+    name: string;
+    image: string;
+    id: string;
   };
 }
 
@@ -27,6 +37,7 @@ interface CommentDoc extends Document {
   votes: string[];
   date: Date;
   postId: string;
+  replies: ReplyDoc[];
   user: {
     id: string;
     name: string;
@@ -34,4 +45,20 @@ interface CommentDoc extends Document {
   };
 }
 
-export { CommentAttrs, CommentDoc, CommentModel };
+/**
+ * Interface that describes the properties that a nested Reply Document has
+ */
+
+interface ReplyDoc {
+  _id: string;
+  reply: string;
+  votes: string[];
+  date: Date;
+  user: {
+    id: string;
+    name: string;
+    image: string;
+  };
+}
+
+export { CommentAttrs, CommentDoc, CommentModel, ReplyAttrs, ReplyDoc };

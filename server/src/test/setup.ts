@@ -45,6 +45,7 @@ global.createComment = async (): Promise<CommentDoc> => {
     user: {
       name: "test user",
       image: "test image",
+      id: "test id",
     },
   };
 
