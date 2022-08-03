@@ -1,5 +1,6 @@
 import { addCommentAPI, getCommentsAPI } from '../../api/comments';
 import { usersData } from '../../dummyData/users';
+import { User } from '../../interfaces/user';
 import { handleServerErrors } from '../../utils/handleServerErrors';
 import { constructComment } from './comment';
 import styles from './styles.module.scss';
@@ -38,7 +39,7 @@ export const setUpDiscussions = (id: string) => {
   const commentsContainer = element.querySelector<HTMLDivElement>(
     `.${styles.comments}`
   )!;
-  addExistingComments(commentsContainer, user.id);
+  addExistingComments(commentsContainer, user);
 
   // Handle the form submission
   const form = element.querySelector<HTMLFormElement>(`.${styles.form}`)!;
@@ -57,7 +58,7 @@ export const setUpDiscussions = (id: string) => {
       console.log('res', res);
       const commentElement = constructComment({
         payload: res,
-        currentUserId: user.id,
+        currentUser: user,
       });
 
       commentsContainer.append(commentElement);
@@ -70,12 +71,12 @@ export const setUpDiscussions = (id: string) => {
 
 const addExistingComments = async (
   element: HTMLDivElement,
-  currentUserId: string
+  currentUser: User
 ) => {
   const existingComments = await getCommentsAPI();
 
   const comments = existingComments.map((comment) =>
-    constructComment({ payload: comment, currentUserId })
+    constructComment({ payload: comment, currentUser })
   );
 
   element.append(...comments);

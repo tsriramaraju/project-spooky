@@ -10,16 +10,29 @@
     <img class="${styles.image}" src="${image}" alt="${name} photo" />
     <div class="${styles.details}">
       <h4 class="${styles.name}">
-        ${name}<span class="${ styles.date }"
-          >. ${moment(date).fromNow()}
-        </span>
+        ${name}<span class="${styles.date}">. ${moment(date).fromNow()} </span>
       </h4>
       <p class="${styles.text}">${comment}</p>
-
       <div class="${styles.actions}">
-        <div class="${styles.count}" id="votes-${randomNumber}"></div>
+        <div class="${styles.count}"></div>
         <div class="${styles.vote}"></div>
+        <div class="${styles.reply}" data-input="hidden">Reply</div>
       </div>
+      <form class="${styles.form} ${styles.hide}" action="">
+        <img
+          class="${styles.image}"
+          src="${currentUser.image}"
+          alt="${currentUser.name} image"
+        />
+        <textarea
+          class="${ styles.input }"
+          cols="30"
+          rows="10"
+          placeholder="What are your thoughts?"
+        ></textarea>
+        <button class="${styles.button}" type="submit">Reply</button>
+      </form>
+      <div class="${styles.replies}"></div>
     </div>
   </body>
 </html>
