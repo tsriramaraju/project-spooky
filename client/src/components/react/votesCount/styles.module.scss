@@ -1,3 +1,28 @@
 @use '../../../scss/breakpoints';
 @use '../../../scss/config';
 @use '../../../scss/mixins';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  position: relative;
+
+  .count {
+    font-size: 1.1rem;
+
+    color: config.$dark_accent;
+  }
+  .icon {
+    width: 1rem;
+    height: 1rem;
+    color: config.$dark_accent;
+  }
+
+  .lottie {
+    position: absolute;
+    width: 3rem;
+    height: 1rem;
+    top: -1rem;
+  }
+}

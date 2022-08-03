@@ -23,18 +23,6 @@
   }
 }
 
-.count {
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  color: config.$dark_accent;
-  .icon {
-    width: 1rem;
-    height: 1rem;
-    color: config.$dark_accent;
-  }
-}
 .reply {
   display: flex;
   gap: 1rem;
