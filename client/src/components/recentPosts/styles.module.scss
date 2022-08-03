@@ -4,7 +4,7 @@
 
 .recentPosts {
   margin-top: 1rem;
-  padding: 0.5rem;
+  padding: 1rem;
   width: 100%;
   border-radius: config.$br_small;
   background-color: white;
@@ -13,6 +13,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100%;
   gap: 0.5rem;
   overflow-y: scroll;
@@ -20,14 +21,14 @@
   .post {
     .title {
       color: config.$dark_shade;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 600;
       font-family: config.$font;
     }
     .meta {
-      // padding-top: 0.35rem;
+      padding-top: 0.15rem;
       display: flex;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: config.$light_accent;
       .name {
         font-weight: 500;
@@ -41,8 +42,8 @@
     }
 
     .content {
-      font-size: 0.9rem;
-      line-height: 1.4rem;
+      font-size: 0.85em;
+      line-height: 1.45rem;
       padding-top: 0.25rem;
       color: config.$light_accent;
       width: 100%;
@@ -56,9 +57,10 @@
     }
   }
   .ruler {
-    width: 100%;
+    flex-grow: 1;
     border-radius: config.$br_small;
     background-color: config.$light_accent;
-    height: 0.1rem;
+    height: 1px;
+    width: 100%;
   }
 }

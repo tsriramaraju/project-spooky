@@ -204,20 +204,6 @@ const setVoteAction = (element: HTMLDivElement, isUpVoted: boolean) => {
 
 /*
 
-  Add's the vote count to the comment
-
-  */
-
-const setVotesCount = (element: HTMLDivElement, count: number) => {
-  if (count === 0) element.innerHTML = '';
-  else
-    element.innerHTML = `${count} ${icons.heart.toSvg({
-      class: styles.icon,
-    })}`;
-};
-
-/*
-
   Add's input toggle functionality to the reply button
 
   */

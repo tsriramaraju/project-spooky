@@ -7,7 +7,7 @@ export const setUpRecentPosts = (id: string) => {
   element.className = styles.recentPosts;
 
   element.innerHTML = `
-   <div class="${styles.post}">
+  <div class="${styles.post}">
       <h3 class="${styles.title}">Using Mantine with React and Next</h3>
       <p class="${styles.meta}">
         <span class="${styles.name}">Daniel Ita,</span>
@@ -15,10 +15,14 @@ export const setUpRecentPosts = (id: string) => {
         <span class="${styles.time}">5 Min</span>
       </p>
       <p class="${styles.content}">
-     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro totam sint facilis molestiae error mollitia consequuntur dolorum esse nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam tempore inventore delectus?
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
+        inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro
+        totam sint facilis molestiae error mollitia consequuntur dolorum esse
+        nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam
+        tempore inventore delectus?
       </p>
     </div>
-    <div class="${styles.ruler}"></div>
+    <div class="${styles.ruler}">&nbsp;</div>
     <div class="${styles.post}">
       <h3 class="${styles.title}">Using Mantine with React and Next</h3>
       <p class="${styles.meta}">
@@ -27,10 +31,14 @@ export const setUpRecentPosts = (id: string) => {
         <span class="${styles.time}">5 Min</span>
       </p>
       <div class="${styles.content}">
-     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro totam sint facilis molestiae error mollitia consequuntur dolorum esse nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam tempore inventore delectus?
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
+        inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro
+        totam sint facilis molestiae error mollitia consequuntur dolorum esse
+        nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam
+        tempore inventore delectus?
       </div>
     </div>
-    <div class="${styles.ruler}"/></div>
+    <div class="${styles.ruler}">&nbsp;</div>
     <div class="${styles.post}">
       <h3 class="${styles.title}">Using Mantine with React and Next</h3>
       <p class="${styles.meta}">
@@ -39,10 +47,14 @@ export const setUpRecentPosts = (id: string) => {
         <span class="${styles.time}">5 Min</span>
       </p>
       <p class="${styles.content}">
-     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro totam sint facilis molestiae error mollitia consequuntur dolorum esse nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam tempore inventore delectus?
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
+        inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro
+        totam sint facilis molestiae error mollitia consequuntur dolorum esse
+        nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam
+        tempore inventore delectus?
       </p>
     </div>
-    <div class="${styles.ruler}"/></div>
+    <div class="${styles.ruler}">&nbsp;</div>
     <div class="${styles.post}">
       <h3 class="${styles.title}">Using Mantine with React and Next</h3>
       <p class="${styles.meta}">
@@ -51,10 +63,14 @@ export const setUpRecentPosts = (id: string) => {
         <span class="${styles.time}">5 Min</span>
       </p>
       <p class="${styles.content}">
-     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro totam sint facilis molestiae error mollitia consequuntur dolorum esse nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam tempore inventore delectus?
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
+        inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro
+        totam sint facilis molestiae error mollitia consequuntur dolorum esse
+        nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam
+        tempore inventore delectus?
       </p>
     </div>
-    <div class="${styles.ruler}"/></div>
+    <div class="${styles.ruler}">&nbsp;</div>
     <div class="${styles.post}">
       <h3 class="${styles.title}">Using Mantine with React and Next</h3>
       <p class="${styles.meta}">
@@ -63,8 +79,12 @@ export const setUpRecentPosts = (id: string) => {
         <span class="${styles.time}">5 Min</span>
       </p>
       <p class="${styles.content}">
-     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro totam sint facilis molestiae error mollitia consequuntur dolorum esse nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam tempore inventore delectus?
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
+        inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro
+        totam sint facilis molestiae error mollitia consequuntur dolorum esse
+        nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam
+        tempore inventore delectus?
       </p>
-    </div >
+    </div>
       `;
 };
