@@ -17,6 +17,11 @@ describe("Toggle UpVote service test group", () => {
       userId: comment.user.id,
     });
 
+    expect(typeof result).not.toBe("string");
+
+    if (typeof result === "string") {
+      return;
+    }
     expect(result.votes).toEqual(1);
 
     expect(result.upVoted).toEqual(true);
@@ -26,10 +31,19 @@ describe("Toggle UpVote service test group", () => {
     const comment = await global.createComment();
 
     const result = await toggleUpvote({ commentId: comment._id, userId: comment.user.id });
+    expect(typeof result).not.toBe("string");
 
+    if (typeof result === "string") {
+      return;
+    }
     expect(result.upVoted).toEqual(true);
     expect(result.votes).toEqual(1);
     const result2 = await toggleUpvote({ commentId: comment._id, userId: comment.user.id });
+    expect(typeof result2).not.toBe("string");
+
+    if (typeof result2 === "string") {
+      return;
+    }
     expect(result2.votes).toEqual(0);
     expect(result2.upVoted).toEqual(false);
   });
@@ -50,6 +64,11 @@ describe("Toggle UpVote service test group", () => {
       userId: comment.user.id,
       replyId: reply,
     });
+    expect(typeof result).not.toBe("string");
+
+    if (typeof result === "string") {
+      return;
+    }
     expect(result.votes).toEqual(1);
     expect(result.upVoted).toEqual(true);
   });
@@ -63,6 +82,11 @@ describe("Toggle UpVote service test group", () => {
       userId: comment.user.id,
       replyId: reply,
     });
+    expect(typeof result).not.toBe("string");
+
+    if (typeof result === "string") {
+      return;
+    }
     expect(result.votes).toEqual(1);
     expect(result.upVoted).toEqual(true);
 
@@ -71,6 +95,11 @@ describe("Toggle UpVote service test group", () => {
       userId: comment.user.id,
       replyId: reply,
     });
+    expect(typeof result2).not.toBe("string");
+
+    if (typeof result2 === "string") {
+      return;
+    }
     expect(result2.votes).toEqual(0);
     expect(result2.upVoted).toEqual(false);
   });

@@ -14,6 +14,12 @@ beforeAll(async () => {
   process.env.MONGO_URL = "Some random url";
   process.env.SLACK_SECRET = "Some random secret";
 
+  process.env.PUSHER_APP_ID = "Some random secret";
+  process.env.PUSHER_KEY = "Some random secret";
+  process.env.PUSHER_SECRET = "Some random secret";
+
+  jest.setTimeout(50000);
+
   mongo = await MongoMemoryServer.create();
   const mongoUri = mongo.getUri();
 
@@ -33,6 +39,7 @@ beforeEach(async () => {
 });
 
 afterAll(async () => {
+  jest.setTimeout(50000);
   await mongo.stop();
   await connection.close();
 });
@@ -42,7 +49,7 @@ afterEach(() => {
 
 global.createComment = async (): Promise<CommentDoc> => {
   const data = {
-    comment: "test comment",
+    comment: "test comment test comment",
     user: {
       name: "test user",
       image: "test image",
@@ -57,7 +64,7 @@ global.createComment = async (): Promise<CommentDoc> => {
 global.createReply = async (commentId: string): Promise<string> => {
   const replyId = new Types.ObjectId().toString();
   const reply: ReplyDoc = {
-    reply: "test reply",
+    reply: "test reply test reply",
     _id: replyId,
     date: new Date(),
     votes: [],

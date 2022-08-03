@@ -78,7 +78,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          envs: IMAGE_NAME,REGISTRY,{{ secrets.DIGITALOCEAN_ACCESS_TOKEN }},GITHUB_SHA,{{secrets.PORT}},{{secrets.MONGO_URL}},{{secrets.SLACK_SECRET}}
+          envs: IMAGE_NAME,REGISTRY,{{ secrets.DIGITALOCEAN_ACCESS_TOKEN }},GITHUB_SHA,{{secrets.PORT}},{{secrets.MONGO_URL}},{{secrets.SLACK_SECRET}},{{secrets.PUSHER_KEY}},{{secrets.PUSHER_SECRET}},{{secrets.PUSHER_APP_ID}}
           script: |
             # Login to registry
             docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} registry.digitalocean.com
@@ -91,6 +91,9 @@ jobs:
             -e PORT=${{ secrets.PORT }} \
             -e MONGO_URL=${{ secrets.MONGO_URL }} \
             -e SLACK_SECRET=${{ secrets.SLACK_SECRET }} \
+            -e PUSHER_KEY=${{ secrets.PUSHER_KEY }} \
+            -e PUSHER_SECRET=${{ secrets.PUSHER_SECRET }} \
+            -e PUSHER_APP_ID=${{ secrets.PUSHER_APP_ID }} \
             -p 3000:${{ secrets.PORT }} \
             -d \
             --restart always \
