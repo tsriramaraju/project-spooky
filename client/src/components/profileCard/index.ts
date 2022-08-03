@@ -25,7 +25,6 @@ export const setUpProfileCard = (id: string) => {
           <p class="${styles.chip}">#Programming</p>
           <p class="${styles.chip}">#Startups</p>
           <p class="${styles.chip}">#Films</p>
-          <p class="${styles.chip}">#JavaScript</p>
         </div>
       </div>
     </div>

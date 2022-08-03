@@ -1,11 +1,11 @@
 import moment from 'moment';
 import { icons } from 'feather-icons';
-import { CommentPayload } from '../../../interfaces/comment';
+import { CommentDoc } from '../../../interfaces/comment';
 import styles from './styles.module.scss';
 import { toggleVoteAPI } from '../../../api/comments';
 import { handleServerErrors } from '../../../utils/handleServerErrors';
 export const constructComment = (data: {
-  payload: CommentPayload;
+  payload: CommentDoc;
   currentUserId: string;
 }) => {
   const {
@@ -56,7 +56,10 @@ export const constructComment = (data: {
   //   Add's the vote action to the comment
   voteElement.addEventListener('click', async () => {
     try {
-      const res = await toggleVoteAPI(_id, currentUserId);
+      const res = await toggleVoteAPI({
+        commentId: _id,
+        userId: currentUserId,
+      });
 
       if (!res) {
         setVotesCount(countElement, --counter);

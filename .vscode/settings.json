@@ -1,3 +1,23 @@
 {
-  "cSpell.words": ["notyf"]
+  "cSpell.words": ["notyf"],
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#43e4b4",
+    "activityBar.activeBorder": "#bc58e7",
+    "activityBar.background": "#43e4b4",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#bc58e7",
+    "activityBarBadge.foreground": "#15202b",
+    "sash.hoverBorder": "#43e4b4",
+    "statusBar.background": "#1fd59f",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#19a87e",
+    "statusBarItem.remoteBackground": "#1fd59f",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#1fd59f",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#1fd59f99",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#1fd59f"
 }
