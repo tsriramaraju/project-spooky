@@ -5,6 +5,7 @@ import styles from './styles.module.scss';
 import { toggleVoteAPI } from '../../../api/comments';
 import { handleServerErrors } from '../../../utils/handleServerErrors';
 import { User } from '../../../interfaces/user';
+import { constructReply } from '../reply';
 export const constructComment = (data: {
   payload: CommentDoc;
   currentUser: User;
@@ -101,10 +102,25 @@ export const constructComment = (data: {
     toggleReply(replyElement, commentElement);
   });
 
+  // Add existing replies to the comment
+  if (replies.length) {
+    const repliesContainer = commentElement.querySelector<HTMLDivElement>(
+      `.${styles.replies}`
+    )!;
+
+    replies.forEach((reply) => {
+      const replyElement = constructReply({
+        reply,
+        currentUser,
+      });
+      repliesContainer.append(replyElement);
+    });
+  }
+
   return commentElement;
 };
 
-const setVoteAction = (element: HTMLDivElement, isUpVoted: boolean) => {
+export const setVoteAction = (element: HTMLDivElement, isUpVoted: boolean) => {
   if (isUpVoted) {
     element.innerHTML = `
         ${icons.triangle.toSvg({ class: `${styles.icon} ${styles.reverse}` })}
@@ -118,7 +134,7 @@ const setVoteAction = (element: HTMLDivElement, isUpVoted: boolean) => {
   }
 };
 
-const setVotesCount = (element: HTMLDivElement, count: number) => {
+export const setVotesCount = (element: HTMLDivElement, count: number) => {
   if (count === 0) element.innerHTML = '';
   else
     element.innerHTML = `${count} ${icons.heart.toSvg({
