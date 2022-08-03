@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { Comment } from "../../models/comments.model";
 import { addComment } from "../addComment";
 
@@ -12,6 +13,7 @@ describe("Add Comment service test group", () => {
       user: {
         name: "Test user",
         image: "Test Image",
+        id: new Types.ObjectId().toString(),
       },
     };
 

@@ -8,14 +8,7 @@ describe("Get Comments service test group", () => {
   });
 
   it("Should return list of comments if comments are found", async () => {
-    const data = {
-      comment: "Test comment",
-      user: {
-        name: "Test user",
-        image: "Test Image",
-      },
-    };
-    const comment = await addComment(data);
+    await global.createComment();
     const comments = await getComments();
     expect(comments?.length).toBe(1);
   });

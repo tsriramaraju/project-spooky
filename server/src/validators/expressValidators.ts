@@ -29,6 +29,16 @@ const userImageValidation = body("user.image")
   .isURL()
   .withMessage("User image must be a URL");
 
+const user_id_validation = body("user.id")
+  .isString()
+  .withMessage("User id must be a string")
+  .not()
+  .isEmpty()
+  .withMessage("User id is required")
+  .custom((value, { req }) => {
+    if (Types.ObjectId.isValid(value)) return true;
+    throw new Error("User id must be a valid ObjectId");
+  });
 const userIdValidation = body("userId")
   .isString()
   .withMessage("User id must be a string")
@@ -40,4 +50,4 @@ const userIdValidation = body("userId")
     throw new Error("User id must be a valid ObjectId");
   });
 
-export { commentValidation, userNameValidation, userImageValidation, userIdValidation };
+export { commentValidation, userNameValidation, userImageValidation, userIdValidation, user_id_validation };

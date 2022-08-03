@@ -21,7 +21,7 @@ router.put("/:id", [userIdValidation, validateRequest], async (req: Request, res
     throw new TamperedRequestError("Invalid comment id");
   }
 
-  const status = await toggleUpvote(id, userId);
+  const status = await toggleUpvote({ commentId: id, userId });
 
   if (typeof status === "string") throw new ResourceNotFoundError(status);
 

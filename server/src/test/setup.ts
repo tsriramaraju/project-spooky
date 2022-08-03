@@ -1,10 +1,11 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
-import { connect, connection } from "mongoose";
-import { CommentDoc } from "../interfaces/comments";
+import { connect, connection, Types } from "mongoose";
+import { CommentDoc, ReplyDoc } from "../interfaces/comments";
 import { Comment } from "../models/comments.model";
 
 declare global {
   function createComment(): Promise<CommentDoc>;
+  function createReply(commentId: string): Promise<string>;
 }
 
 let mongo: any;
@@ -45,10 +46,33 @@ global.createComment = async (): Promise<CommentDoc> => {
     user: {
       name: "test user",
       image: "test image",
-      id: "test id",
+      id: new Types.ObjectId().toString(),
     },
   };
 
   const comment = Comment.build(data).save();
   return comment;
+};
+
+global.createReply = async (commentId: string): Promise<string> => {
+  const replyId = new Types.ObjectId().toString();
+  const reply: ReplyDoc = {
+    reply: "test reply",
+    _id: replyId,
+    date: new Date(),
+    votes: [],
+    user: {
+      name: "test user",
+      image: "test image",
+      id: new Types.ObjectId().toString(),
+    },
+  };
+
+  const comment = await Comment.findById(commentId);
+
+  comment!.replies.push(reply);
+
+  await comment!.save();
+
+  return replyId;
 };

@@ -1,6 +1,10 @@
 import request from "supertest";
 import { app } from "../../../app";
 import { getComments } from "../../../services";
+import { Types } from "mongoose";
+
+const commentId = new Types.ObjectId().toString();
+const imageURL = "https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png";
 
 describe("Add Comment route test group", () => {
   it("should return error if comment is not string", async () => {
@@ -10,14 +14,15 @@ describe("Add Comment route test group", () => {
         comment: 1,
         user: {
           name: "test user",
-          image: "test image",
+          image: imageURL,
+          id: commentId,
         },
       });
 
     expect(response.status).toBe(418);
 
     expect(response.body.msg).toBe("Validation error, please enter valid inputs");
-    expect(response.body.errors).toHaveLength(3);
+    expect(response.body.errors).toHaveLength(2);
     expect(response.body.errors[0].message).toBe("Comment must be a string");
   });
 
@@ -28,13 +33,14 @@ describe("Add Comment route test group", () => {
         comment: "",
         user: {
           name: "test user",
-          image: "test image",
+          image: imageURL,
+          id: commentId,
         },
       });
 
     expect(response.status).toBe(418);
     expect(response.body.msg).toBe("Validation error, please enter valid inputs");
-    expect(response.body.errors).toHaveLength(3);
+    expect(response.body.errors).toHaveLength(2);
     expect(response.body.errors[0].message).toBe("Comment is required");
   });
 
@@ -45,13 +51,14 @@ describe("Add Comment route test group", () => {
         comment: "test",
         user: {
           name: "test user",
-          image: "test image",
+          image: imageURL,
+          id: commentId,
         },
       });
 
     expect(response.status).toBe(418);
     expect(response.body.msg).toBe("Validation error, please enter valid inputs");
-    expect(response.body.errors).toHaveLength(2);
+    expect(response.body.errors).toHaveLength(1);
     expect(response.body.errors[0].message).toBe("Comment must be min 10 characters long");
   });
   it("should return error if user name is not string", async () => {
@@ -61,13 +68,14 @@ describe("Add Comment route test group", () => {
         comment: "test comment",
         user: {
           name: 1,
-          image: "test image",
+          image: imageURL,
+          id: commentId,
         },
       });
 
     expect(response.status).toBe(418);
     expect(response.body.msg).toBe("Validation error, please enter valid inputs");
-    expect(response.body.errors).toHaveLength(3);
+    expect(response.body.errors).toHaveLength(2);
     expect(response.body.errors[0].message).toBe("User name must be a string");
   });
 
@@ -78,13 +86,14 @@ describe("Add Comment route test group", () => {
         comment: "test comment",
         user: {
           name: "",
-          image: "test image",
+          image: imageURL,
+          id: commentId,
         },
       });
 
     expect(response.status).toBe(418);
     expect(response.body.msg).toBe("Validation error, please enter valid inputs");
-    expect(response.body.errors).toHaveLength(3);
+    expect(response.body.errors).toHaveLength(2);
     expect(response.body.errors[0].message).toBe("User name is required");
   });
 
@@ -95,13 +104,14 @@ describe("Add Comment route test group", () => {
         comment: "test comment",
         user: {
           name: "te",
-          image: "test image",
+          image: imageURL,
+          id: commentId,
         },
       });
 
     expect(response.status).toBe(418);
     expect(response.body.msg).toBe("Validation error, please enter valid inputs");
-    expect(response.body.errors).toHaveLength(2);
+    expect(response.body.errors).toHaveLength(1);
     expect(response.body.errors[0].message).toBe("User name must be min 3 characters long");
   });
 
@@ -113,6 +123,7 @@ describe("Add Comment route test group", () => {
         user: {
           name: "test user",
           image: 1,
+          id: commentId,
         },
       });
 
@@ -130,6 +141,7 @@ describe("Add Comment route test group", () => {
         user: {
           name: "test user",
           image: "",
+          id: commentId,
         },
       });
 
@@ -147,6 +159,7 @@ describe("Add Comment route test group", () => {
         user: {
           name: "test user",
           image: "test image",
+          id: commentId,
         },
       });
 
@@ -156,6 +169,59 @@ describe("Add Comment route test group", () => {
     expect(response.body.errors[0].message).toBe("User image must be a URL");
   });
 
+  it("should return error if user id is not string", async () => {
+    const response = await request(app)
+      .post("/api/v1/comments")
+      .send({
+        comment: "test comment",
+        user: {
+          name: "test user",
+          image: imageURL,
+          id: 1,
+        },
+      });
+
+    expect(response.status).toBe(418);
+    expect(response.body.msg).toBe("Validation error, please enter valid inputs");
+    expect(response.body.errors).toHaveLength(1);
+    expect(response.body.errors[0].message).toBe("User id must be a string");
+  });
+
+  it("should return error if user id is empty", async () => {
+    const response = await request(app)
+      .post("/api/v1/comments")
+      .send({
+        comment: "test comment",
+        user: {
+          name: "test user",
+          image: imageURL,
+        },
+      });
+
+    expect(response.status).toBe(418);
+    expect(response.body.msg).toBe("Validation error, please enter valid inputs");
+    expect(response.body.errors).toHaveLength(3);
+    expect(response.body.errors[0].message).toBe("User id must be a string");
+  });
+
+  it("should return error if user id is not a valid id", async () => {
+    const response = await request(app)
+      .post("/api/v1/comments")
+      .send({
+        comment: "test comment",
+        user: {
+          name: "test user",
+          image: imageURL,
+          id: "test",
+        },
+      });
+
+    expect(response.status).toBe(418);
+    expect(response.body.msg).toBe("Validation error, please enter valid inputs");
+    expect(response.body.errors).toHaveLength(1);
+    expect(response.body.errors[0].message).toBe("User id must be a valid ObjectId");
+  });
+
   it("Should add comment if all fields are valid", async () => {
     const response = await request(app)
       .post("/api/v1/comments")
@@ -163,7 +229,8 @@ describe("Add Comment route test group", () => {
         comment: "test comment",
         user: {
           name: "test user",
-          image: "https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png",
+          image: imageURL,
+          id: commentId,
         },
       });
 
