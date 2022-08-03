@@ -2,7 +2,7 @@ import moment from 'moment';
 import { icons } from 'feather-icons';
 import { CommentDoc } from '../../../interfaces/comment';
 import styles from './styles.module.scss';
-import { toggleVoteAPI } from '../../../api/comments';
+import { addReplyAPI, toggleVoteAPI } from '../../../api/comments';
 import { handleServerErrors } from '../../../utils/handleServerErrors';
 import { User } from '../../../interfaces/user';
 import { constructReply } from '../reply';
@@ -112,35 +112,117 @@ export const constructComment = (data: {
       const replyElement = constructReply({
         reply,
         currentUser,
+        commentId: _id,
       });
       repliesContainer.append(replyElement);
     });
   }
 
+  // Reply form submit handler
+
+  const replyForm = commentElement.querySelector<HTMLFormElement>(
+    `.${styles.form}`
+  )!;
+
+  replyForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const input = replyForm.querySelector<HTMLInputElement>(
+      `.${styles.input}`
+    )!;
+
+    try {
+      const replyId = await addReplyAPI({
+        commentId: _id,
+        reply: {
+          reply: input.value,
+          user: currentUser,
+        },
+      });
+
+      const reply = constructReply({
+        currentUser,
+        commentId: _id,
+        reply: {
+          _id: replyId,
+          reply: input.value,
+          user: currentUser,
+          date: new Date(),
+          votes: [],
+        },
+      });
+
+      const repliesContainer = commentElement.querySelector<HTMLDivElement>(
+        `.${styles.replies}`
+      )!;
+
+      const line = commentElement.querySelector<HTMLDivElement>(
+        `.${styles.line}`
+      )!;
+
+      line.classList.remove(styles.hide);
+
+      repliesContainer.appendChild(reply);
+      toggleReply(replyElement, commentElement);
+    } catch (error) {
+      handleServerErrors(error);
+    }
+  });
+
   return commentElement;
 };
 
-export const setVoteAction = (element: HTMLDivElement, isUpVoted: boolean) => {
+/*
+
+  Add's toggle functionality to vote button
+
+  */
+
+export const setVoteAction = (
+  element: HTMLDivElement,
+  isUpVoted: boolean,
+  iconStyles?: string
+) => {
   if (isUpVoted) {
     element.innerHTML = `
-        ${icons.triangle.toSvg({ class: `${styles.icon} ${styles.reverse}` })}
+        ${icons.triangle.toSvg({
+          class: iconStyles ? iconStyles : `${styles.icon} ${styles.reverse}`,
+        })}
         Downvote
       `;
   } else {
     element.innerHTML = `
-        ${icons.triangle.toSvg({ class: styles.icon })}
+        ${icons.triangle.toSvg({
+          class: iconStyles ? iconStyles : styles.icon,
+        })}
         Upvote
       `;
   }
 };
 
-export const setVotesCount = (element: HTMLDivElement, count: number) => {
+/*
+
+  Add's the vote count to the comment
+
+  */
+
+export const setVotesCount = (
+  element: HTMLDivElement,
+  count: number,
+  iconStyles?: string
+) => {
   if (count === 0) element.innerHTML = '';
   else
     element.innerHTML = `${count} ${icons.heart.toSvg({
-      class: styles.icon,
+      class: iconStyles ? iconStyles : styles.icon,
     })}`;
 };
+
+/*
+
+  Add's input toggle functionality to the reply button
+
+  */
 
 const toggleReply = (
   replyButton: HTMLDivElement,
@@ -165,6 +247,8 @@ const toggleReply = (
     const input = replyForm.querySelector<HTMLInputElement>(
       `.${styles.input}`
     )!;
+
+    // clear the input field when the reply is cancelled
 
     input.value = '';
   }

@@ -2,14 +2,14 @@
 @use '../../../scss/config';
 @use '../../../scss/mixins';
 
-.comment {
+.reply {
   display: flex;
   gap: 1rem;
 
   .image {
     margin-top: 0.5rem;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
@@ -20,18 +20,18 @@
     flex-grow: 1;
 
     .name {
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 500;
       color: config.$dark_shade;
       .date {
         color: config.$light_accent;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 400;
       }
     }
     .text {
       color: config.$dark_shade;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 400;
       line-height: 1.24rem;
       padding: 0.15rem 0;
