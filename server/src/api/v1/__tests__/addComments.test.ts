@@ -201,7 +201,7 @@ describe("Add Comment route test group", () => {
     expect(response.status).toBe(418);
     expect(response.body.msg).toBe("Validation error, please enter valid inputs");
     expect(response.body.errors).toHaveLength(3);
-    expect(response.body.errors[0].message).toBe("User id must be a string");
+    expect(response.body.errors[0].message).toBe("User id is required");
   });
 
   it("should return error if user id is not a valid id", async () => {

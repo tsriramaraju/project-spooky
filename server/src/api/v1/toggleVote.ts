@@ -13,19 +13,27 @@ const router = Router();
  *  @access    Public
  *  @returns   toggle status
  */
-router.put("/:id", [userIdValidation, validateRequest], async (req: Request, res: Response) => {
-  const { id } = req.params;
+
+export const toggleVoteController = async (req: Request, res: Response) => {
+  const { id, replyId } = req.params;
   const { userId } = req.body;
 
   if (!Types.ObjectId.isValid(id)) {
     throw new TamperedRequestError("Invalid comment id");
   }
 
-  const status = await toggleUpvote({ commentId: id, userId });
+  if (replyId && !Types.ObjectId.isValid(replyId)) {
+    throw new TamperedRequestError("Invalid reply id");
+  }
+
+  const status = await toggleUpvote({ commentId: id, userId, replyId });
 
   if (typeof status === "string") throw new ResourceNotFoundError(status);
 
   res.status(201).json(status);
-});
+};
+
+router.put("/:id/:replyId", [userIdValidation, validateRequest], toggleVoteController);
+router.put("/:id", [userIdValidation, validateRequest], toggleVoteController);
 
 export { router as toggleVoteRouter };
