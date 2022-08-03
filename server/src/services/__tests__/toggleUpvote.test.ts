@@ -17,7 +17,9 @@ describe("Toggle UpVote service test group", () => {
       userId: comment.user.id,
     });
 
-    expect(result).toEqual(true);
+    expect(result.votes).toEqual(1);
+
+    expect(result.upVoted).toEqual(true);
   });
 
   it("Should downvote the comment if user has upvoted the comment", async () => {
@@ -25,11 +27,11 @@ describe("Toggle UpVote service test group", () => {
 
     const result = await toggleUpvote({ commentId: comment._id, userId: comment.user.id });
 
-    expect(result).toEqual(true);
-
+    expect(result.upVoted).toEqual(true);
+    expect(result.votes).toEqual(1);
     const result2 = await toggleUpvote({ commentId: comment._id, userId: comment.user.id });
-
-    expect(result2).toEqual(false);
+    expect(result2.votes).toEqual(0);
+    expect(result2.upVoted).toEqual(false);
   });
 
   it("Should return not found message if non existing comment id is given", async () => {
@@ -48,8 +50,8 @@ describe("Toggle UpVote service test group", () => {
       userId: comment.user.id,
       replyId: reply,
     });
-
-    expect(result).toEqual(true);
+    expect(result.votes).toEqual(1);
+    expect(result.upVoted).toEqual(true);
   });
 
   it("Should downvote the reply if user has upvoted the reply", async () => {
@@ -61,16 +63,16 @@ describe("Toggle UpVote service test group", () => {
       userId: comment.user.id,
       replyId: reply,
     });
-
-    expect(result).toEqual(true);
+    expect(result.votes).toEqual(1);
+    expect(result.upVoted).toEqual(true);
 
     const result2 = await toggleUpvote({
       commentId: comment._id,
       userId: comment.user.id,
       replyId: reply,
     });
-
-    expect(result2).toEqual(false);
+    expect(result2.votes).toEqual(0);
+    expect(result2.upVoted).toEqual(false);
   });
 
   it("Should return not found message if non existing reply id is given", async () => {

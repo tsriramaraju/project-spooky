@@ -63,7 +63,6 @@
     .actions {
       display: flex;
       align-items: center;
-
       .vote {
         display: flex;
         align-items: center;
@@ -97,6 +96,7 @@
           color: config.$dark_accent;
         }
       }
+
       .reply {
         margin-left: 1.5rem;
         font-size: 0.9rem;

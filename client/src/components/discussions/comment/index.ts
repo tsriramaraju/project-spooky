@@ -6,6 +6,7 @@ import { addReplyAPI, toggleVoteAPI } from '../../../api/comments';
 import { handleServerErrors } from '../../../utils/handleServerErrors';
 import { User } from '../../../interfaces/user';
 import { constructReply } from '../reply';
+import { getRoot, renderReact } from '../../../utils/setupReact';
 export const constructComment = (data: {
   payload: CommentDoc;
   currentUser: User;
@@ -65,7 +66,10 @@ export const constructComment = (data: {
   const countElement = commentElement.querySelector<HTMLDivElement>(
     `.${styles.count}`
   )!;
-  setVotesCount(countElement, counter);
+  // setVotesCount(countElement, counter);
+
+  const root = getRoot(countElement);
+  renderReact(root, votes.length, `comment-${_id}`);
 
   //   Add's the vote action to the comment
   const voteElement = commentElement.querySelector<HTMLDivElement>(
@@ -82,10 +86,12 @@ export const constructComment = (data: {
       });
 
       if (!res) {
-        setVotesCount(countElement, --counter);
+        renderReact(root, --counter, `comment-${_id}`);
+        // setVotesCount(countElement, --counter);
         setVoteAction(voteElement, false);
       } else {
-        setVotesCount(countElement, ++counter);
+        renderReact(root, ++counter, `comment-${_id}`);
+        // setVotesCount(countElement, ++counter);
         setVoteAction(voteElement, true);
       }
     } catch (error) {
@@ -178,22 +184,18 @@ export const constructComment = (data: {
 
   */
 
-export const setVoteAction = (
-  element: HTMLDivElement,
-  isUpVoted: boolean,
-  iconStyles?: string
-) => {
+const setVoteAction = (element: HTMLDivElement, isUpVoted: boolean) => {
   if (isUpVoted) {
     element.innerHTML = `
         ${icons.triangle.toSvg({
-          class: iconStyles ? iconStyles : `${styles.icon} ${styles.reverse}`,
+          class: `${styles.icon} ${styles.reverse}`,
         })}
         Downvote
       `;
   } else {
     element.innerHTML = `
         ${icons.triangle.toSvg({
-          class: iconStyles ? iconStyles : styles.icon,
+          class: styles.icon,
         })}
         Upvote
       `;
@@ -206,15 +208,11 @@ export const setVoteAction = (
 
   */
 
-export const setVotesCount = (
-  element: HTMLDivElement,
-  count: number,
-  iconStyles?: string
-) => {
+const setVotesCount = (element: HTMLDivElement, count: number) => {
   if (count === 0) element.innerHTML = '';
   else
     element.innerHTML = `${count} ${icons.heart.toSvg({
-      class: iconStyles ? iconStyles : styles.icon,
+      class: styles.icon,
     })}`;
 };
 

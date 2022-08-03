@@ -3,6 +3,7 @@ import { Types } from "mongoose";
 import { ResourceNotFoundError, TamperedRequestError } from "../../errors";
 import { validateRequest } from "../../middlewares";
 import { toggleUpvote } from "../../services";
+import { sendPusherEvent } from "../../utils";
 import { userIdValidation } from "../../validators";
 
 const router = Router();
@@ -30,7 +31,9 @@ export const toggleVoteController = async (req: Request, res: Response) => {
 
   if (typeof status === "string") throw new ResourceNotFoundError(status);
 
-  res.status(201).json(status);
+  sendPusherEvent(status.votes, replyId ? `reply-${replyId}` : `comment-${id}`);
+
+  res.status(201).json(status.upVoted);
 };
 
 router.put("/:id/:replyId", [userIdValidation, validateRequest], toggleVoteController);

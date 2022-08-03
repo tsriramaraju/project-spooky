@@ -3,9 +3,9 @@ import { icons } from 'feather-icons';
 import styles from './styles.module.scss';
 import { User } from '../../../interfaces/user';
 import moment from 'moment';
-import { setVoteAction, setVotesCount } from '../comment';
 import { toggleVoteAPI } from '../../../api/comments';
 import { handleServerErrors } from '../../../utils/handleServerErrors';
+import { getRoot, renderReact } from '../../../utils/setupReact';
 
 export const constructReply = (data: {
   reply: ReplyDoc;
@@ -50,13 +50,15 @@ export const constructReply = (data: {
   const countElement = replyElement.querySelector<HTMLDivElement>(
     `.${styles.count}`
   )!;
-  setVotesCount(countElement, counter, styles.icon);
+
+  const root = getRoot(countElement);
+  renderReact(root, votes.length, `reply-${_id}`);
 
   //   Add's the vote action to the comment
   const voteElement = replyElement.querySelector<HTMLDivElement>(
     `.${styles.vote}`
   )!;
-  setVoteAction(voteElement, isUpVoted, styles.icon);
+  setVoteAction(voteElement, isUpVoted);
 
   //   Add's the vote action to the comment
   voteElement.addEventListener('click', async () => {
@@ -68,10 +70,12 @@ export const constructReply = (data: {
       });
 
       if (!res) {
-        setVotesCount(countElement, --counter);
+        // setVotesCount(countElement, --counter);
+        renderReact(root, --counter, `reply-${_id}`);
         setVoteAction(voteElement, false);
       } else {
-        setVotesCount(countElement, ++counter);
+        // setVotesCount(countElement, ++counter);
+        renderReact(root, ++counter, `reply-${_id}`);
         setVoteAction(voteElement, true);
       }
     } catch (error) {
@@ -80,4 +84,42 @@ export const constructReply = (data: {
   });
 
   return replyElement;
+};
+
+/*
+
+  Add's toggle functionality to vote button
+
+  */
+
+const setVoteAction = (element: HTMLDivElement, isUpVoted: boolean) => {
+  if (isUpVoted) {
+    element.innerHTML = `
+        ${icons.triangle.toSvg({
+          class: `${styles.icon} ${styles.reverse}`,
+        })}
+        Downvote
+      `;
+  } else {
+    element.innerHTML = `
+        ${icons.triangle.toSvg({
+          class: styles.icon,
+        })}
+        Upvote
+      `;
+  }
+};
+
+/*
+
+  Add's the vote count to the comment
+
+  */
+
+const setVotesCount = (element: HTMLDivElement, count: number) => {
+  if (count === 0) element.innerHTML = '';
+  else
+    element.innerHTML = `${count} ${icons.heart.toSvg({
+      class: styles.icon,
+    })}`;
 };

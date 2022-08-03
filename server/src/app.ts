@@ -6,7 +6,10 @@ import { security } from "./config/security";
 import { errorHandler } from "./middlewares/errorHandler";
 import { initializeRoutes } from "./routes";
 
+import Pusher from "pusher";
 import secrets from "./config/secrets";
+
+export const pusher = new Pusher(secrets.pusher);
 
 /**
  * initiate express app and body parser for json requests

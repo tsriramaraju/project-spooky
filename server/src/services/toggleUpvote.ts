@@ -11,6 +11,7 @@ export const toggleUpvote = async (data: { commentId: string; userId: string; re
     }
 
     let upVoted = false;
+    let votes = 0;
 
     if (replyId) {
       // find the reply
@@ -29,6 +30,8 @@ export const toggleUpvote = async (data: { commentId: string; userId: string; re
         comment.replies[replyIndex].votes.push(userId);
         upVoted = true;
       }
+
+      votes = comment.replies[replyIndex].votes.length;
     } else {
       if (comment.votes.find((vote) => vote.toString() === userId.toString())) {
         comment.votes = comment.votes.filter((vote) => vote !== userId);
@@ -38,11 +41,13 @@ export const toggleUpvote = async (data: { commentId: string; userId: string; re
         comment.votes.push(userId);
         upVoted = true;
       }
+
+      votes = comment.votes.length;
     }
 
     await comment.save();
 
-    return upVoted;
+    return { votes, upVoted };
   } catch (error) {
     console.log(error);
 
