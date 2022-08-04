@@ -17,14 +17,17 @@ export const constructComment = (data: {
       comment,
       date,
       user: { image, name },
-      votes,
+
       replies,
     },
     currentUser,
   } = data;
 
-  const isUpVoted = !!votes.find((id) => id.toString() === currentUser.id);
-  let counter = votes.length;
+  let votes = [...data.payload.votes];
+
+  const getIsUpVoted = () => {
+    return !!votes.find((id) => id.toString() === currentUser.id);
+  };
 
   const commentElement = document.createElement('div');
 
@@ -69,32 +72,47 @@ export const constructComment = (data: {
   // setVotesCount(countElement, counter);
 
   const root = getRoot(countElement);
-  renderReact(root, votes.length, `comment-${_id}`);
+  renderReact(root, votes.length, `comment-${_id}`, currentUser.id);
 
   //   Add's the vote action to the comment
   const voteElement = commentElement.querySelector<HTMLDivElement>(
     `.${styles.vote}`
   )!;
-  setVoteAction(voteElement, isUpVoted);
+  setVoteAction(voteElement, getIsUpVoted());
+
+  const upvote = () => {
+    votes.push(currentUser.id);
+    renderReact(root, votes.length, `comment-${_id}`, currentUser.id);
+    setVoteAction(voteElement, true);
+  };
+
+  const downvote = () => {
+    votes = [
+      ...votes.filter((id) => id.toString() !== currentUser.id.toString()),
+    ];
+    renderReact(root, votes.length, `comment-${_id}`, currentUser.id);
+    setVoteAction(voteElement, false);
+  };
 
   //   Add's the vote action to the comment
   voteElement.addEventListener('click', async () => {
+    // Update the vote count offline for better experience
+    getIsUpVoted() ? downvote() : upvote();
+
     try {
       const res = await toggleVoteAPI({
         commentId: _id,
         userId: currentUser.id,
       });
-
-      if (!res) {
-        renderReact(root, --counter, `comment-${_id}`);
-        // setVotesCount(countElement, --counter);
-        setVoteAction(voteElement, false);
-      } else {
-        renderReact(root, ++counter, `comment-${_id}`);
-        // setVotesCount(countElement, ++counter);
-        setVoteAction(voteElement, true);
+      // Fallback if comment already voted in other session
+      if (res !== getIsUpVoted()) {
+        console.log('fallback');
+        getIsUpVoted() ? downvote() : upvote();
       }
     } catch (error) {
+      // Fallback if server fails to update vote
+      getIsUpVoted() ? downvote() : upvote();
+
       handleServerErrors(error);
     }
   });

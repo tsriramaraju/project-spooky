@@ -1,7 +1,7 @@
 import { CommentAttrs, CommentDoc, ReplyAttrs } from '../interfaces/comment';
 import axios from 'axios';
-// export const api = 'http://192.168.0.121:4545/api/v1/comments';
-export const api = 'https://storzey.com/api/v1/comments';
+export const api = 'http://192.168.0.121:4545/api/v1/comments';
+// export const api = 'https://storzey.com/api/v1/comments';
 
 export const getCommentsAPI = async (): Promise<CommentDoc[]> => {
   const res = await axios.get(api);

@@ -37,5 +37,6 @@ export interface CommentAttrs {
   user: {
     name: string;
     image: string;
+    id: string;
   };
 }

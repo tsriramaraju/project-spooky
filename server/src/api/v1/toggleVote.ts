@@ -31,7 +31,7 @@ export const toggleVoteController = async (req: Request, res: Response) => {
 
   if (typeof status === "string") throw new ResourceNotFoundError(status);
 
-  sendPusherEvent(status.votes, replyId ? `reply-${replyId}` : `comment-${id}`);
+  sendPusherEvent({ votes: status.votes, upVoted: status.upVoted, userId }, replyId ? `reply-${replyId}` : `comment-${id}`);
 
   res.status(201).json(status.upVoted);
 };

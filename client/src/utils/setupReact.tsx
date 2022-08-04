@@ -7,6 +7,11 @@ export const getRoot = (element: HTMLDivElement) => {
   return root;
 };
 
-export const renderReact = (root: Root, value: number, id: string) => {
-  root.render(<VotesCount count={value} id={id} />);
+export const renderReact = (
+  root: Root,
+  value: number,
+  id: string,
+  userId: string
+) => {
+  root.render(<VotesCount count={value} id={id} userId={userId} />);
 };

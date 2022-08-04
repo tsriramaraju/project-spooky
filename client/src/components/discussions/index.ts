@@ -50,10 +50,7 @@ export const setUpDiscussions = (id: string) => {
     try {
       const res = await addCommentAPI({
         comment: input.value,
-        user: {
-          image: user.image,
-          name: user.name,
-        },
+        user,
       });
       console.log('res', res);
       const commentElement = constructComment({
