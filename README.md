@@ -1,3 +1,5 @@
+ <h3 align="center">Project Spooky</h3>
+
 ![Repository Banner](responsive.png)
 
 # Project Details
