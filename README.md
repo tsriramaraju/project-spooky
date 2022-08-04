@@ -1,3 +1,5 @@
+![Repository Banner](responsive.png)
+
 # Project Details
 This is an MVP for the blog I’m planning to build. I wanna use this blog to share my stories, experiences and thoughts. This version is just to test the real time functionality of votes.
 

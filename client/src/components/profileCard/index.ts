@@ -37,7 +37,7 @@ export const setUpProfileCard = (id: string) => {
     <div class="${styles.footer}">
       <div class="${styles.dateBlock}">
         <p class="${styles.heading}">Joined</p>
-        <p class="${styles.date}">Jul 26, 2022</p>
+        <p class="${styles.date}">Jul 26, 2018</p>
       </div>
       <div class="${styles.statsBlock}">
         <p class="${styles.text}">

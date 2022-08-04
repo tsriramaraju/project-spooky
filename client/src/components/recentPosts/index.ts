@@ -8,83 +8,59 @@ export const setUpRecentPosts = (id: string) => {
 
   element.innerHTML = `
   <div class="${styles.post}">
-      <h3 class="${styles.title}">Using Mantine with React and Next</h3>
+      <h3 class="${styles.title}">I was such a naive!</h3>
       <p class="${styles.meta}">
-        <span class="${styles.name}">Daniel Ita,</span>
-        Aug 2nd, 2022
-        <span class="${styles.time}">5 Min</span>
+        Sep 19th, 2018
+        <span class="${styles.time}">10 Min</span>
       </p>
       <p class="${styles.content}">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
-        inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro
-        totam sint facilis molestiae error mollitia consequuntur dolorum esse
-        nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam
-        tempore inventore delectus?
+       In early days of my professional journey, I thought life would be simpler and predictable. I was not aware of the challenges I was thrown into.
       </p>
     </div>
     <div class="${styles.ruler}">&nbsp;</div>
     <div class="${styles.post}">
-      <h3 class="${styles.title}">Using Mantine with React and Next</h3>
+      <h3 class="${styles.title}">Things I learnt from media experience.</h3>
       <p class="${styles.meta}">
-        <span class="${styles.name}">Daniel Ita,</span>
-        Aug 2nd, 2022
-        <span class="${styles.time}">5 Min</span>
+        May 1st, 2019
+        <span class="${styles.time}">8 Min</span>
       </p>
       <div class="${styles.content}">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
-        inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro
-        totam sint facilis molestiae error mollitia consequuntur dolorum esse
-        nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam
-        tempore inventore delectus?
+        I learnt and explored different roles in media. I've understood the art of storytelling and the importance of having a clear and concise story.
       </div>
     </div>
     <div class="${styles.ruler}">&nbsp;</div>
     <div class="${styles.post}">
-      <h3 class="${styles.title}">Using Mantine with React and Next</h3>
+      <h3 class="${styles.title}">How I failed in my first startup.</h3>
       <p class="${styles.meta}">
-        <span class="${styles.name}">Daniel Ita,</span>
-        Aug 2nd, 2022
+        Aug 2nd, 2019
         <span class="${styles.time}">5 Min</span>
       </p>
       <p class="${styles.content}">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
-        inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro
-        totam sint facilis molestiae error mollitia consequuntur dolorum esse
-        nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam
-        tempore inventore delectus?
+        I started too early with minimal knowledge of the industry. I just had an idea and wanted to build it. But it didn't work.
       </p>
     </div>
     <div class="${styles.ruler}">&nbsp;</div>
     <div class="${styles.post}">
-      <h3 class="${styles.title}">Using Mantine with React and Next</h3>
+      <h3 class="${styles.title}">Why did I start Storzey?</h3>
       <p class="${styles.meta}">
-        <span class="${styles.name}">Daniel Ita,</span>
-        Aug 2nd, 2022
-        <span class="${styles.time}">5 Min</span>
+        March 30th, 2020
+        <span class="${styles.time}">12 Min</span>
       </p>
       <p class="${styles.content}">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
-        inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro
-        totam sint facilis molestiae error mollitia consequuntur dolorum esse
-        nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam
-        tempore inventore delectus?
+        After working with several clients, I thought all their basic requirements can be addressed by a single platform. I started Storzey to solve this problem.
       </p>
     </div>
-    <div class="${styles.ruler}">&nbsp;</div>
+     <div class="${styles.ruler}">&nbsp;</div>
     <div class="${styles.post}">
-      <h3 class="${styles.title}">Using Mantine with React and Next</h3>
+      <h3 class="${styles.title}">Times when hustle was everything.</h3>
       <p class="${styles.meta}">
-        <span class="${styles.name}">Daniel Ita,</span>
-        Aug 2nd, 2022
-        <span class="${styles.time}">5 Min</span>
+        Jan 4th, 2022
+        <span class="${styles.time}">3 Min</span>
       </p>
       <p class="${styles.content}">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
-        inventore, ducimus aliquam nemo quam ut nesciunt ad delectus. Quis porro
-        totam sint facilis molestiae error mollitia consequuntur dolorum esse
-        nihil, perferendis alias? Doloribus, at iusto! Assumenda laboriosam
-        tempore inventore delectus?
+       I was so focused on my work that I didn't have time to do anything else. I was always hustling and always had a goal.
       </p>
     </div>
+
       `;
 };

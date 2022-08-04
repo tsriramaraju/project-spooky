@@ -15,7 +15,7 @@ export const setUpContent = (id: string) => {
      allowfullscreen="allowfullscreen"
      scrolling="no"
      class="fp-iframe"
-     style="border: 1px solid lightgray; width: 100%; height: 600px"
+     style="border: 1px solid lightgray; width: 100%; height: 600px;"
      src="https://heyzine.com/flip-book/7f6e1515d6.html"
    ></iframe>
     <p class="${styles.text}">

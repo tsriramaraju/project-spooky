@@ -6,13 +6,7 @@ export const usersData = [
     image:
       'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60',
   },
-  {
-    name: 'Sriram',
-    id: '5f196f92ab58e90017ec548c',
 
-    image:
-      'https://tsriramaraju.github.io/project-spooky/assets/sriram.1c1f3156.jpg',
-  },
   {
     name: 'Ana Itonishvili',
     id: '5f196f67ab58e90017ec558c',
