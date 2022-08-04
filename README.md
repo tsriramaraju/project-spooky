@@ -1,3 +1,4 @@
+![Project Logo](cover.png)
 ![Repository Banner](responsive.png)
 
 # Project Details
@@ -14,6 +15,10 @@ This is an MVP for the blog I’m planning to build. I wanna use this blog to sh
 >Version: **1.0**<br>
 
 
+
+## Demo
+
+Client - [tsriramaraju.github.io/project-spooky/](tsriramaraju.github.io/project-spooky/)
 
 <!-- GETTING STARTED -->
 ## Run Locally
