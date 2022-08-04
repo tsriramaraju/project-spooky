@@ -11,7 +11,7 @@ export const renderReact = (
   root: Root,
   value: number,
   id: string,
-  userId: string
+  sessionId: string
 ) => {
-  root.render(<VotesCount count={value} id={id} userId={userId} />);
+  root.render(<VotesCount count={value} id={id} sessionId={sessionId} />);
 };

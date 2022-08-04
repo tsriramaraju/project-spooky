@@ -71,8 +71,9 @@ export const constructComment = (data: {
   )!;
   // setVotesCount(countElement, counter);
 
+  const sessionId = Math.ceil(Math.random() * 1000000).toString();
   const root = getRoot(countElement);
-  renderReact(root, votes.length, `comment-${_id}`, currentUser.id);
+  renderReact(root, votes.length, `comment-${_id}`, sessionId);
 
   //   Add's the vote action to the comment
   const voteElement = commentElement.querySelector<HTMLDivElement>(
@@ -82,7 +83,7 @@ export const constructComment = (data: {
 
   const upvote = () => {
     votes.push(currentUser.id);
-    renderReact(root, votes.length, `comment-${_id}`, currentUser.id);
+    renderReact(root, votes.length, `comment-${_id}`, sessionId);
     setVoteAction(voteElement, true);
   };
 
@@ -90,7 +91,7 @@ export const constructComment = (data: {
     votes = [
       ...votes.filter((id) => id.toString() !== currentUser.id.toString()),
     ];
-    renderReact(root, votes.length, `comment-${_id}`, currentUser.id);
+    renderReact(root, votes.length, `comment-${_id}`, sessionId);
     setVoteAction(voteElement, false);
   };
 
@@ -103,6 +104,7 @@ export const constructComment = (data: {
       const res = await toggleVoteAPI({
         commentId: _id,
         userId: currentUser.id,
+        sessionId,
       });
       // Fallback if comment already voted in other session
       if (res !== getIsUpVoted()) {

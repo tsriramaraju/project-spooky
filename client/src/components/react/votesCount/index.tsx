@@ -5,15 +5,14 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import styles from './styles.module.scss';
 import heartLottie from '../../../assets/lottie/heart2.json';
 import heartBreakLottie from '../../../assets/lottie/heartBreak.json';
-import { notyf } from '../../../utils/handleServerErrors';
 
 interface props {
   count: number;
   id: string;
-  userId: string;
+  sessionId: string;
 }
 
-const VotesCount = ({ count, id, userId }: props) => {
+const VotesCount = ({ count, id, sessionId }: props) => {
   const [voteCount, setVoteCount] = useState(count);
   const [animationData, setAnimationData] = useState<any>(heartLottie);
   const [playAnimation, setPlayAnimation] = useState(false);
@@ -37,15 +36,9 @@ const VotesCount = ({ count, id, userId }: props) => {
       setVoteCount(count);
     }
     channel.bind(id, (data: any) => {
-      const { votes, upVoted, userId: user } = data.message;
+      const { votes, upVoted, sessionId: session } = data.message;
 
-      // if user is not the same as the one who voted, then update the vote count
-      if (votes === count) return;
-
-      // if same user voted from different browser
-      if (user.toString() === userId.toString()) {
-        notyf.error('Duplicate session identified');
-        window.location.reload();
+      if (session === sessionId) {
         return;
       }
       handleAnimation(upVoted);

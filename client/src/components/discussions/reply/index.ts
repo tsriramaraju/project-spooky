@@ -53,8 +53,9 @@ export const constructReply = (data: {
     `.${styles.count}`
   )!;
 
+  const sessionId = Math.ceil(Math.random() * 1000000).toString();
   const root = getRoot(countElement);
-  renderReact(root, votes.length, `reply-${_id}`, currentUser.id);
+  renderReact(root, votes.length, `reply-${_id}`, sessionId);
 
   //   Add's the vote action to the reply
   const voteElement = replyElement.querySelector<HTMLDivElement>(
@@ -64,7 +65,7 @@ export const constructReply = (data: {
 
   const upvote = () => {
     votes.push(currentUser.id);
-    renderReact(root, votes.length, `reply-${_id}`, currentUser.id);
+    renderReact(root, votes.length, `reply-${_id}`, sessionId);
     setVoteAction(voteElement, true);
   };
 
@@ -72,7 +73,7 @@ export const constructReply = (data: {
     votes = [
       ...votes.filter((id) => id.toString() !== currentUser.id.toString()),
     ];
-    renderReact(root, votes.length, `reply-${_id}`, currentUser.id);
+    renderReact(root, votes.length, `reply-${_id}`, sessionId);
     setVoteAction(voteElement, false);
   };
 
@@ -80,10 +81,10 @@ export const constructReply = (data: {
   voteElement.addEventListener('click', async () => {
     // Update the vote count offline for better experience
     getIsUpVoted() ? downvote() : upvote();
-
     try {
       const res = await toggleVoteAPI({
         commentId: commentId,
+        sessionId,
         userId: currentUser.id,
         replyId: _id,
       });

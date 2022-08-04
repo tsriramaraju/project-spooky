@@ -18,13 +18,15 @@ export const addCommentAPI = async (
 export const toggleVoteAPI = async (data: {
   commentId: string;
   userId: string;
+  sessionId: string;
   replyId?: string;
 }): Promise<Boolean> => {
-  const { commentId, userId, replyId } = data;
+  const { commentId, userId, replyId, sessionId } = data;
   const response = await axios.put(
     replyId ? `${api}/${commentId}/${replyId}` : `${api}/${commentId}`,
     {
       userId,
+      sessionId,
     }
   );
   return response.data;

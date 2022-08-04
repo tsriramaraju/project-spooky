@@ -17,7 +17,7 @@ const router = Router();
 
 export const toggleVoteController = async (req: Request, res: Response) => {
   const { id, replyId } = req.params;
-  const { userId } = req.body;
+  const { userId, sessionId } = req.body;
 
   if (!Types.ObjectId.isValid(id)) {
     throw new TamperedRequestError("Invalid comment id");
@@ -31,7 +31,7 @@ export const toggleVoteController = async (req: Request, res: Response) => {
 
   if (typeof status === "string") throw new ResourceNotFoundError(status);
 
-  sendPusherEvent({ votes: status.votes, upVoted: status.upVoted, userId }, replyId ? `reply-${replyId}` : `comment-${id}`);
+  sendPusherEvent({ votes: status.votes, upVoted: status.upVoted, sessionId }, replyId ? `reply-${replyId}` : `comment-${id}`);
 
   res.status(201).json(status.upVoted);
 };
